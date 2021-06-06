@@ -62,19 +62,12 @@ def diario(request):
             regis = Registro.objects.get(
                 usuario=user, fecha=datetime.date.today())
         form = RegistroForm(instance=regis)
-        #print(type(regis))
         if datetime.datetime.now().strftime("%H:%M") == '12:47':
             return redirect('notificacionAgua/'+str(regis.pk))
-            #print("si vale")
-        #print(type(regis))
-        return render(request, 'diario.html', {'form': form,'object':regis})
         return render(request, 'diario.html', {'form': form,'object':regis})
     else:
         regis = Registro.objects.get(usuario=user, fecha=datetime.date.today())
         form = RegistroForm(request.POST, instance=regis)
-        #print(form.is_valid())
-        #print(form)
-        #form.fields['usuario']=request.user
         if form.is_valid():
             form.save()
             #Puntos por el estres
