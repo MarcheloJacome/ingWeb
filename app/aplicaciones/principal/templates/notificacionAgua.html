@@ -1,0 +1,22 @@
+{% extends 'base1.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<h1 class="display-4">¡Recordatorio de tomar agua!</h1>
+<p class="lead font-italic">Ingresa los vasos adicionales de agua que has tomado</p>
+{% endblock title %}
+{% block content %}
+<form action="" method="post" autocomplete="on">
+    {% csrf_token %}
+    {{form.cantidadAgua|as_crispy_field}}
+    {% for message in messages %}
+    <p id="messages">{{message}}</p>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-plus-circle"></i>
+                Registrar</button>
+        </div>
+    </div>
+
+</form>
+{% endblock content %}

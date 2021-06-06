@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <h1>Desea eliminar el producto {{object}}?</h1>
+    <button type="submit">CONFIRMAR</button>
+    <a href="{% url 'index' %}">Cancelar</a>
+</form>

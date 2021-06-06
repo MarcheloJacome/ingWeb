@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}INDEX{% endblock titulo %}</title>
+</head>
+<span>Hola, {{request.user}}</span>
+<span><a href="{% url 'logout' %}">Cerrar Sesion</a></span>
+
+<body>
+    {% block cuerpo %}
+    <h1>LISTADO DE PRODUCTOS</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        {% for producto in object_list %}
+        <tbody>
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.precio }}</td>
+                <td><a href="{% url 'editar_producto' producto.id %}">Editar</a><a
+                        href="{% url 'eliminar_producto' producto.id %}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <a href="{% url 'crear_producto' %}">Crear producto</a>
+
+    </table>
+    {% endblock cuerpo %}
+</body>
+
+</html>

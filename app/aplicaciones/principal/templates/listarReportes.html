@@ -1,0 +1,63 @@
+{% extends 'base1.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<h1 class="display-4">Lista de Reportes</h1>
+
+<p class="lead font-italic"></p>
+{% endblock title %}
+{% block content %}
+<form action="" method="get" autocomplete="off">
+    <div class="row">
+        <div class="col-md-3">{{filter.form.fechaFil|as_crispy_field}}</div>
+        <div class="col-md-3">{{filter.form.startDate|as_crispy_field}}</div>
+        <div class="col-md-3">{{filter.form.endDate|as_crispy_field}}</div>
+        <div class="col-md-2">
+            &nbsp
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-filter"></i>
+                Filtrar</button>
+        </div>
+        <div class="col-md-1">
+            &nbsp
+            <a class="btn btn-secondary  btn-lg" href="{% url 'listarReportes' %}"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+</form>
+<hr>
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Fecha</td>
+            <td>Calificación</td>
+            <td>
+                <a href="{% url 'index' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Nuevo Reporte
+                </a>
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rep in rep_list %}
+        <tr>
+            <td>{{rep.fecha}}</td>
+            <td>{{rep.calificacion}}</td>
+            <td>
+                <a href="{% url 'detalleReporte' rep.pk %}" class="text-secondary">
+                    <i class="fas fa-eye text-secondary"></i> Ver
+                </a>
+            </td>
+            <td>
+                <form action="{% url 'eliminarReporte' rep.pk %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

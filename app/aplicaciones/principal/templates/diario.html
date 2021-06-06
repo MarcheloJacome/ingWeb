@@ -1,0 +1,77 @@
+{% extends 'base1.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<h1 class="display-4">Registro Diario</h1>
+<p class="lead font-italic"></p>
+{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    {{form.usuario |as_crispy_field}}
+    <div class="row">
+        <div class="col-md-11">
+            {{form.agua|as_crispy_field}}
+        </div>
+        <div class="col-md-1 my-auto">           
+            <a onclick="modalEditAgua('{%url 'updateAgua' object.pk%}')"><i class="fas fa-edit"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            {{form.ejercicio|as_crispy_field}}
+        </div>
+        <div class="col-md-1 my-auto">
+            <a onclick="modalEditAgua('{% url 'updateEjercicio' object.pk %} ')" class=""><i class="fas fa-edit"></i></a>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-11">
+                {{form.sleep|as_crispy_field}}
+            </div>
+            <div class="col-md-1 my-auto">
+            <a onclick="modalEditAgua('{% url 'updateSleep' object.pk %} ')" class=""><i class="fas fa-edit"></i></a>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-10">
+            {{form.estres|as_crispy_field}}
+        </div>
+        <div class="col-md-2 my-auto ">
+            <a href="{% url 'tests:test-view' 1 object.pk %}" class="btn btn-outline-secondary">Test de Estrés</a>
+        </div>
+    </div>
+    <div class="row">
+        <!--<div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>-->
+        <div class="col-md-12">        
+                <a class="btn btn-success btn-block btn-lg" href="{% url 'reporteDiario' %}" style="text-decoration: none;color: white;"><i class="fas fa-plus-circle"></i>Generar Reporte</a>
+        </div>
+    </div>
+</form>
+<div class="modal fade" id="editAgua" role="dialog"></div>
+{% block extrajs %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function modalEditAgua(url) {
+        $('#editAgua').load(url, function () {
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}
+
+{% endblock content %}

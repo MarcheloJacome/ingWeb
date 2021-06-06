@@ -1,0 +1,48 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+<h1 class="display-4">Lista de Promedios</h1>
+<p class="lead font-italic"></p>
+{% endblock title %}
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Fecha Inicial</td>
+            <td>Fecha Final</td>
+            <td>Calificación</td>
+            <td>
+                <a href="{% url 'reporteFechas' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Nuevo Promedio
+                </a>
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rep in rep_list %}
+        <tr>
+            <td>{{rep.fechaIn}}</td>
+            <td>{{rep.fechaFin}}</td>
+            <td>{{rep.calificacion}}</td>
+            <td>
+                <a href="{% url 'detalleReporteGen' rep.pk %}" class="text-secondary">
+                    <i class="fas fa-eye text-secondary"></i> Ver
+                </a>
+            </td>
+            <td>
+                <form action="{% url 'eliminarReporteGen' rep.pk %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

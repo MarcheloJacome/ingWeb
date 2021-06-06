@@ -1,0 +1,178 @@
+{% extends 'base1.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<h1 class="display-4">Detalles de promedio de reportes</h1>
+<p class="lead font-italic"></p>
+{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>Fecha Inicial:
+                {{object.fechaIn}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>Fecha Final:
+                {{object.fechaFin}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center my-auto">
+            <h4>Cantidad de agua:
+                {{object.agua}}</h4>
+        </div>
+        {% for message in messages %}
+            {% if message.extra_tags == 'agua' %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="col-md-6 text-center alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="col-md-6 text-center alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="col-md-6 text-center alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="col-md-6 text-center alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center my-auto">
+            <h4>Tiempo de ejercicio:
+                {{object.ejercicio}}</h4>
+        </div>
+        {% for message in messages %}  
+            {% if message.extra_tags == 'ejercicio' %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="col-md-6 text-center alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="col-md-6 text-center alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="col-md-6 text-center alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="col-md-6 text-center alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center my-auto">
+            <h4>Horas de sueño:
+                {{object.sleep}}</h4>
+        </div>
+        {% for message in messages %}  
+            {% if message.extra_tags == 'sleep' %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="col-md-6 text-center alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="col-md-6 text-center alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="col-md-6 text-center alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="col-md-6 text-center alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center my-auto">
+            <h4>Calificación test de estrés:
+                {{object.estres}}</h4>
+        </div>
+        {% for message in messages %}  
+            {% if message.extra_tags == 'estres' %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="col-md-6 text-center alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="col-md-6 text-center alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="col-md-6 text-center alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="col-md-6 text-center alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center my-auto">
+            <h4> Calificación final:
+                {{object.calificacion}}</h4>
+        </div>
+        {% for message in messages %}  
+            {% if message.extra_tags == 'calif' %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <div class="col-md-6 text-center alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="col-md-6 text-center alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="col-md-6 text-center alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                <div class="col-md-6 text-center alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h4>Comentarios:
+                {{object.comentarios}}</h4>
+        </div>
+    </div>
+</div>
+{% endblock content %}
