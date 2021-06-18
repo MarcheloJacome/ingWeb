@@ -81,7 +81,7 @@ class Registro(models.Model):
 class ReporteDiario(models.Model):
     #id = models.AutoField(primary_key=True)
     fecha = models.DateField(null=True)
-    comentarios = models.CharField(max_length=300)
+    #comentarios = models.CharField(max_length=300)
     agua = models.IntegerField()
     ejercicio = models.IntegerField()
     sleep = models.IntegerField()
@@ -97,7 +97,7 @@ class ReporteGeneral(models.Model):
     #id = models.AutoField(primary_key=True)
     fechaIn = models.DateField(null=True)
     fechaFin = models.DateField(null=True)
-    comentarios = models.CharField(max_length=300)
+    #comentarios = models.CharField(max_length=300)
     agua = models.DecimalField(max_digits=5, decimal_places=2)
     ejercicio = models.DecimalField(max_digits=5, decimal_places=2)
     sleep = models.DecimalField(max_digits=5, decimal_places=2)

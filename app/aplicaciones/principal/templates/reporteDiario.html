@@ -164,9 +164,11 @@
         {% endfor %}
     </div>
     <div class="row">
-        <div class="col-md-6 text-center">
-            <h4>Comentarios:
-                {{object.comentarios}}</h4>
+        <div class="col-md-6">
+            <a class="btn btn-secondary btn-block btn-lg" href="{% url 'listarReportes' %}" style="text-decoration: none;color: white;">Ver Reportes</a>
+        </div>
+        <div class="col-md-6">        
+            <a class="btn btn-dark btn-block btn-lg" href="{% url 'index' %}" style="text-decoration: none;color: white;">Volver</a>
         </div>
     </div>
 </div>

@@ -1,13 +1,10 @@
-console.log('hola que hace test')
 const url = window.location.href
 const testBox = document.getElementById('test-box')
-console.log(url)
 //Inyectar el pk en un div con id hiden
 $.ajax({
     type: 'GET',
     url: `${url}data`,
     success: function (response) {
-        console.log(response)
         let data = response.data
         data.forEach(el => {
             for (const [pregunta, respuestas] of Object.entries(el)) {
@@ -55,7 +52,6 @@ const sendData = () => {
         url: `${url}save/`,
         data: data,
         success: function (response) {
-            console.log(response)
             window.location.href = "/";
         },
         error: function (error) {
@@ -68,6 +64,4 @@ testForm.addEventListener('submit', e => {
     e.preventDefault()
     sendData()
     location.href("/")
-    //window.location.replace("../../diario") 
-    //window.location.replace(url+"../../diario")
 })

@@ -62,7 +62,7 @@ def diario(request):
             regis = Registro.objects.get(
                 usuario=user, fecha=datetime.date.today())
         form = RegistroForm(instance=regis)
-        if datetime.datetime.now().strftime("%H:%M") == '12:47':
+        if datetime.datetime.now().strftime("%H:%M") == '17:38':
             return redirect('notificacionAgua/'+str(regis.pk))
         return render(request, 'diario.html', {'form': form,'object':regis})
     else:
@@ -106,14 +106,12 @@ def diario(request):
             except ReporteDiario.DoesNotExist:
                 reporte = ReporteDiario.objects.create(
                     fecha=regis.fecha,
-                    comentarios="",
                     agua=regis.agua,
                     ejercicio=regis.ejercicio,
                     sleep=regis.sleep,
                     estres=regis.estres,
                     calificacion=caliFinal,
                     usuario=user)
-            reporte.comentarios = ""
             reporte.agua = regis.agua
             reporte.ejercicio = regis.ejercicio
             reporte.sleep = regis.sleep
@@ -131,7 +129,6 @@ def reporteDiarioDetail(request):
     except ReporteDiario.DoesNotExist:
         reporte = ReporteDiario.objects.create(
             fecha=datetime.date.today(),
-            comentarios='',
             agua=0, 
             ejercicio=0, 
             sleep=0,
@@ -253,7 +250,6 @@ def reporteFechas(request):
                 ReporteGeneral.objects.create(
                     fechaIn=fechaI,
                     fechaFin=fechaF,
-                    comentarios="",
                     agua=promAgua,
                     ejercicio=promEje,
                     sleep=promSle,

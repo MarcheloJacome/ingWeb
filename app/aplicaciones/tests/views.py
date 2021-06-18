@@ -46,10 +46,8 @@ def save_test_view(request, pk,pk2):
         data_ = dict(data.lists())
         data_.pop('csrfmiddlewaretoken')
         for k in data_.keys():
-            print('key: ',k)
             pregunta = Pregunta.objects.get(texto=k)
             preguntas.append(pregunta)
-        print(preguntas)
         user = request.user
         test = Test.objects.get(pk=pk)
         score = 0
@@ -69,12 +67,7 @@ def save_test_view(request, pk,pk2):
             usuario=user, fecha=datetime.date.today())
         repor.estres = score
         regis.estres = score
-        print('Puntuacion:')
-        print(regis.estres)
         repor.save()
         regis.save()
-        #regis = Registro.objects.filter(usuario=user).filter(
-            #fecha=datetime.date.today())
-        print(regis.usuario)
         Resultado.objects.create(test=test, user=user, puntuacion=score)
         return JsonResponse({'puntuacion':score,'resultados':results})

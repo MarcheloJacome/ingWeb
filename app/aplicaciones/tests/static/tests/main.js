@@ -1,5 +1,3 @@
-console.log("Hola que hace")
-
 const modalBtns = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('start-button')
